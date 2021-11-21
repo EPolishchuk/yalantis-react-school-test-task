@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { IEmployee } from '../../interface/Employee.interface';
 import {
   addActiveStatus,
@@ -8,7 +8,6 @@ import {
 const Employee = (props: { employees: IEmployee[]; letter: string }) => {
   const ACTIVE = 1;
   const NOT_ACTIVE = 0;
-  const count = useSelector((state) => state);
   const dispatch = useDispatch();
 
   return (

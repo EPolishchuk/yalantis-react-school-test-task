@@ -11,10 +11,10 @@ const EmployeeList = () => {
       <h1>Employees</h1>
       {alphabet.map((letter) => (
         <div>
-          <h3>{letter}</h3>
+          <h3 key={`${letter}-letters`}>{letter}</h3>
 
           <Employee
-            key={letter}
+            key={`${letter}-employees`}
             employees={users.filter(
               (employee) =>
                 employee.firstName[0].toLowerCase() === letter.toLowerCase()
