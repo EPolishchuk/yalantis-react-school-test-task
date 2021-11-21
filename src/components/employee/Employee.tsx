@@ -1,8 +1,16 @@
-import { Epmloyee } from '../../interface/Employee.interface';
+import { useDispatch, useSelector } from 'react-redux';
+import { IEmployee } from '../../interface/Employee.interface';
+import {
+  addActiveStatus,
+  removeActiveStatus,
+} from '../../store/reducers/userSlice';
 
-const Employee = (props: { employees: Epmloyee[]; letter: string }) => {
+const Employee = (props: { employees: IEmployee[]; letter: string }) => {
   const ACTIVE = 1;
   const NOT_ACTIVE = 0;
+  const count = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   return (
     <>
       {props.employees.length ? (
@@ -18,6 +26,7 @@ const Employee = (props: { employees: Epmloyee[]; letter: string }) => {
                     name={employee.id}
                     id={employee.id + ACTIVE}
                     value={ACTIVE}
+                    onClick={() => dispatch(addActiveStatus(employee))}
                   />
                   <label htmlFor={employee.id + ACTIVE}>Active</label>
                 </p>
@@ -27,6 +36,7 @@ const Employee = (props: { employees: Epmloyee[]; letter: string }) => {
                     name={employee.id}
                     id={employee.id + NOT_ACTIVE}
                     value={NOT_ACTIVE}
+                    onClick={() => dispatch(removeActiveStatus(employee))}
                   />
                   <label htmlFor={employee.id + NOT_ACTIVE}>Not active</label>
                 </p>
