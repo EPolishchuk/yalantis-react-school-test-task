@@ -7,22 +7,24 @@ const EmployeeBirthdays = (props: {
 }) => {
   const formatDate = (dateAsString: string) => {
     const date = new Date(dateAsString);
-    return `${date.getDay()} ${date.toLocaleString('en-us', {
+    return `${date.getDate()} ${date.toLocaleString('en-us', {
       month: 'long',
     })}, ${date.getFullYear()}`;
   };
   return (
     <>
       <h3>{props.month}</h3>
-      {props.employees.length
-        ? props.employees
-            .sort((a, b) => a.lastName.localeCompare(b.lastName))
-            .map((employee) => (
-              <p>{`${employee.lastName} ${employee.firstName} — ${formatDate(
-                employee.dob
-              )}`}</p>
-            ))
-        : ''}
+      {props.employees.length ? (
+        props.employees
+          .sort((a, b) => a.lastName.localeCompare(b.lastName))
+          .map((employee) => (
+            <p>{`${employee.lastName} ${employee.firstName} — ${formatDate(
+              employee.dob
+            )}`}</p>
+          ))
+      ) : (
+        <p>No Employees</p>
+      )}
     </>
   );
 };

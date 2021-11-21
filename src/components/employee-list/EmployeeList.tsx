@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { users } from '../../mocks/mock';
 import Employee from '../employee/Employee';
 
@@ -7,7 +6,7 @@ const EmployeeList = () => {
   const alphabet = alpha.map((x) => String.fromCharCode(x));
 
   return (
-    <div>
+    <section>
       <h1>Employees</h1>
       {alphabet.map((letter) => (
         <div>
@@ -23,7 +22,7 @@ const EmployeeList = () => {
           ></Employee>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

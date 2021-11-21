@@ -24,7 +24,7 @@ const EmployeeBirthdaysList = () => {
   };
 
   return (
-    <div>
+    <section>
       <h1>Employees birthday</h1>
       <div>
         {employeeList.length ? (
@@ -41,7 +41,7 @@ const EmployeeBirthdaysList = () => {
           <p>Employees List is empty</p>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
