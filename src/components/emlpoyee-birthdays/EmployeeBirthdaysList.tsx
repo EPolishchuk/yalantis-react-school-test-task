@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { IEmployee } from '../../interface/Employee.interface';
 import { EmployeeState } from '../../interface/EmployeeState.interface';
 import EmployeeBirthdays from './EmployeeBirthdays';
@@ -25,11 +26,28 @@ const EmployeeBirthdaysList = () => {
     const date = new Date(dateAsString);
     return date.toLocaleString('en-us', { month: 'long' });
   };
+  const BirthdaySection = styled.section`
+    height: 100vh;
+    overflow: auto;
+  `;
+
+  const Header = styled.h1`
+    border-bottom: 1px solid #000;
+    text-align: center;
+    padding-bottom: 1.5rem;
+  `;
+
+  const BirthdayList = styled.section`
+    border-left: 1px solid #000;
+    min-height: 40vh;
+    padding-left: 1.5rem;
+    overflow: hidden;
+  `;
 
   return (
-    <section>
-      <h1>Employees birthday</h1>
-      <div>
+    <BirthdaySection>
+      <Header>Employees birthday</Header>
+      <BirthdayList>
         {employeeList?.length ? (
           monthNames.map((month) => (
             <EmployeeBirthdays
@@ -43,8 +61,8 @@ const EmployeeBirthdaysList = () => {
         ) : (
           <p>Employees List is empty</p>
         )}
-      </div>
-    </section>
+      </BirthdayList>
+    </BirthdaySection>
   );
 };
 
