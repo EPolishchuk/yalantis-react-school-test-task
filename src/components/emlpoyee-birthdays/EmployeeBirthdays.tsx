@@ -12,7 +12,7 @@ const EmployeeBirthdays = (props: {
     })}, ${date.getFullYear()}`;
   };
   return (
-    <>
+    <div key={`${props.month}-employee-dob-list`}>
       <h3>{props.month}</h3>
       {props.employees.length ? (
         props.employees
@@ -25,7 +25,7 @@ const EmployeeBirthdays = (props: {
       ) : (
         <p>No Employees</p>
       )}
-    </>
+    </div>
   );
 };
 

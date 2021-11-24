@@ -1,5 +1,9 @@
 import { IEmployee } from './Employee.interface';
 
 export interface EmployeeState {
-  activeList: IEmployee[];
+  employees: {
+    activeList: IEmployee[];
+    employeeList: IEmployee[];
+    loading: boolean;
+  };
 }

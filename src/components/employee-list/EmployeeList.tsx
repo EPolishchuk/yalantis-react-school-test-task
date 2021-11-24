@@ -1,4 +1,3 @@
-import { users } from '../../mocks/mock';
 import Employee from '../employee/Employee';
 
 const EmployeeList = () => {
@@ -11,15 +10,7 @@ const EmployeeList = () => {
       {alphabet.map((letter) => (
         <div>
           <h3 key={`${letter}-letters`}>{letter}</h3>
-
-          <Employee
-            key={`${letter}-employees`}
-            employees={users.filter(
-              (employee) =>
-                employee.firstName[0].toLowerCase() === letter.toLowerCase()
-            )}
-            letter={letter}
-          ></Employee>
+          <Employee key={`${letter}-employees`} letter={letter}></Employee>
         </div>
       ))}
     </section>

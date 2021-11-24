@@ -1,9 +1,12 @@
 import { useSelector } from 'react-redux';
+import { IEmployee } from '../../interface/Employee.interface';
 import { EmployeeState } from '../../interface/EmployeeState.interface';
 import EmployeeBirthdays from './EmployeeBirthdays';
 
 const EmployeeBirthdaysList = () => {
-  const employeeList = useSelector((state: EmployeeState) => state.activeList);
+  const employeeList = useSelector(
+    (state: EmployeeState) => state.employees.activeList
+  );
   const monthNames = [
     'November',
     'December',
@@ -27,13 +30,13 @@ const EmployeeBirthdaysList = () => {
     <section>
       <h1>Employees birthday</h1>
       <div>
-        {employeeList.length ? (
+        {employeeList?.length ? (
           monthNames.map((month) => (
             <EmployeeBirthdays
               key={month}
               month={month}
               employees={employeeList.filter(
-                (employee) => month === getMonthName(employee.dob)
+                (employee: IEmployee) => month === getMonthName(employee.dob)
               )}
             ></EmployeeBirthdays>
           ))

@@ -1,17 +1,21 @@
-import React from 'react';
 import EmployeeBirthdaysList from './components/emlpoyee-birthdays/EmployeeBirthdaysList';
 import EmployeeList from './components/employee-list/EmployeeList';
-import store from './store/store';
-import { Provider } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { loadEmployees } from './store/reducers/userSlice';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadEmployees());
+  }, [dispatch]);
+
   return (
-    <Provider store={store}>
-      <div className='employee'>
-        <EmployeeList></EmployeeList>
-        <EmployeeBirthdaysList></EmployeeBirthdaysList>
-      </div>
-    </Provider>
+    <div className='employee'>
+      <EmployeeList></EmployeeList>
+      <EmployeeBirthdaysList></EmployeeBirthdaysList>
+    </div>
   );
 };
 

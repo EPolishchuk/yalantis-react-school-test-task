@@ -1,21 +1,31 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IEmployee } from '../../interface/Employee.interface';
+import { EmployeeState } from '../../interface/EmployeeState.interface';
 import {
   addActiveStatus,
   removeActiveStatus,
 } from '../../store/reducers/userSlice';
 
-const Employee = (props: { employees: IEmployee[]; letter: string }) => {
+const Employee = (props: { letter: string }) => {
   const ACTIVE = 1;
   const NOT_ACTIVE = 0;
   const dispatch = useDispatch();
+  const employees = useSelector(
+    (state: EmployeeState) => state.employees.employeeList
+  );
+  let loading = useSelector((state: EmployeeState) => state.employees.loading);
+  let users = [...employees];
+
+  // let users = [...employyes];
 
   return (
-    <>
-      {props.employees.length ? (
-        props.employees
-          .sort((a, b) => a.firstName.localeCompare(b.firstName))
-          .map((employee) => (
+    <div key={`${props.letter}-employee-list`}>
+      {!loading && users?.length ? (
+        users
+          .sort((a: IEmployee, b: IEmployee) =>
+            a.firstName.localeCompare(b.firstName)
+          )
+          .map((employee: IEmployee) => (
             <>
               <h5>{`${employee.firstName} ${employee.lastName}`}</h5>
               <div>
@@ -45,7 +55,7 @@ const Employee = (props: { employees: IEmployee[]; letter: string }) => {
       ) : (
         <p>No Employees</p>
       )}
-    </>
+    </div>
   );
 };
 
