@@ -14,7 +14,9 @@ const Employee = (props: { letter: string }) => {
     (state: EmployeeState) => state.employees.employeeList
   );
   let loading = useSelector((state: EmployeeState) => state.employees.loading);
-  let users = [...employees];
+  let users = employees.filter(
+    (employee: IEmployee) => employee.firstName[0] === props.letter
+  );
 
   return (
     <div key={`${props.letter}-employee-list`}>
