@@ -16,8 +16,6 @@ const Employee = (props: { letter: string }) => {
   let loading = useSelector((state: EmployeeState) => state.employees.loading);
   let users = [...employees];
 
-  // let users = [...employyes];
-
   return (
     <div key={`${props.letter}-employee-list`}>
       {!loading && users?.length ? (
